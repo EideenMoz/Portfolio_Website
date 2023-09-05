@@ -1,0 +1,218 @@
+/* Syntax and Terminology
+    i.e. 
+        - body is the "Selctor", background: paleturquoise is the "Declaration"
+        - background is a "Property"
+        - paleturquoise is the "Value" */
+        body {
+            background: paleturquoise;
+        }
+
+/* Shorthand and Longhand Properties 
+    - Shorthand properties set multiple styles in one statment 
+    - Longhand properties set values individually 
+    i.e. */
+        /* Shorthand properties are defined with multiple values. */
+        h1 {
+            padding: 10px 5px 20px 15px;
+        }
+
+        /* Longhand properties are defined with individual values. */
+        h1 {
+            padding-top: 10px;
+            padding-right: 5px;
+            padding-bottom: 20px;
+            padding-left: 15px;
+        }
+
+/* Comments 
+    i.e.*/
+        /* Header
+        -------------------------------- */
+        h1 {
+            color: #3c8453; /* Dark Green */
+        }
+        h2 {
+            font-size: 1.8rem;
+        }
+
+/* Whitespace
+    - Whitespace (such as spaces, tabs, and line breaks)
+    - Required syntax for certain uses (such as separating CSS values)
+    i.e. */
+        h1 {
+            padding: 10px 5px;
+        }
+/*  - Used to format the code for readibility but is not required
+    i.e. */
+        body {
+            background: lightblue;
+            font-size: 12px;
+        }
+        h1 {
+            padding: 10px 5px;
+        }
+
+/* ------------------------------------------------------------------------------------------------------------------------------------
+
+CSS Properties, Values, and Units
+    i.e. */
+        /* Property: Value */
+        h1 {
+            color: red;
+            color: #3c8453;
+            color: rgb(205,133,63);
+            font-size: 10px;
+            font-size: 1.2rem;
+            font-size: 125%;
+        }
+        
+/* Numeric Data Types
+    - Number-based values
+    - Used with or without units to define different styles 
+    i.e */
+        h1 {
+            width: 80%;
+            height: 1vh;
+            border-width: 2px;
+            animation-iteration-count: 2;
+        }
+
+/*  - <integer>
+    A whole number that can be negative or positive (examples: 100, -10)
+
+    - <number>
+    A whole number or a fraction with decimals (examples: 200, -7.8)
+
+    - <percentage>
+    A fraction of another value (usually a parent or ancestor element) that uses a <number> with a percentage unit (examples: 80%, 45.5%)
+
+    - A <dimension> is a number value with a unit
+    - Represents data types such as <time>, <resolution>, <length>, and more
+    <time>  12s, 5.5ms
+    <resolution>    96dpi, 3dppx
+    <length>    100px, 20vw
+
+    - <length>
+    Used to define a distance value (such as width or font-size)
+    <number> values are used with an absolute or relative unit
+
+Absolute <length> Units
+    - Fixed units based on physical measurements 
+    - Pixels (px) are used for web 
+    i.e.
+        px: pixels
+        cm: centimeters
+        mm: millimeters
+        Q: quarter-millimeters
+        in: inches
+        pt: points
+
+Relative <length> Units
+    - Define a length based on another length
+    - em is relative to the font size of an ancestor element
+    - rem is relative to the root element 
+    i.e.
+        <html>
+            <body>
+                <p>em: relative to ancestor element</p>
+                <p>rem: relative only to the root (html) element</p>
+            </body>
+        </html>
+
+    - Viewport-based units are relative to the size of the browser viewport
+    - vw is relative to the viewport width, vh to the viewport height
+    - vmin is the smaller of vw or vh; vmax is the larger of vw or vh
+    i.e.
+        1vw = 1% of the viewport width 
+        1vh = 1% of the viewport height
+        1vmin = 1% of the smaller of vw and vh
+        1vmax = 1% of the larger of vw and vh
+
+Functions
+    - Function values can include more complex values
+    - Start with the name of the function, followed by parentheses
+    - One or more arguements are used to compute a value 
+    i.e. */
+        h1 {
+            transform: rotate(90deg);   /* Rotates an element */
+            width: calc(80% - 20px);    /* Calculates a value */
+            background-image: url(my-image.jpg);    /* Sets a background image */
+        }
+
+/* ------------------------------------------------------------------------------------------------------------------------------------
+
+Color
+    - The color property changes an element's text color and text decorations (such as underline or strikethrough). It is defined with different types of <color> values
+
+Keyword Values
+    i.e.
+        /* Predefined keywords */
+        h1 {
+            color: red;
+            color: blue;
+            color: green;
+            color: black;
+            color: mediumseagreen;
+            color: oldlace;
+            color: blanchedalmond;
+            color: cornflowerblue;
+            color: darkslategray;
+        }
+        /* Visit neilorangepeel.com for more colors */
+
+/* RGB Function Values
+    i.e. */
+        /* Synatx 
+        rgb ([red] [green] [blue]) */
+        h1 {
+            color: rgb(0 0 0);
+            color: rgb(255, 255, 255);
+            color: rgb(255, 0, 0);
+            color: rgb(0, 255, 0);
+            color: rgb(0, 0, 255);
+
+            /* For adding transparency */
+            color: rgb(0 0 0 / 0.5);   /* Black with 50% opacity */
+            color: rgba(0, 0, 255, 25%);    /* Blue with 25% opacity */
+
+            /* Syntax with space-separted values */
+            color: rgb(255 255 255);
+            color: rgb(255 255 255 / 0.5);
+
+            /* Legacy syntax with comma-separated values */
+            color: rgb(255, 255, 255);
+            color: rgba(255, 255, 255, 0.5);
+        }
+    
+/* RGB Hexadecimal Values 
+    i.e. */
+        /* Syntax 
+        #rrggbb or #RRGGBB */
+        h1 {
+            color: #000000;
+            color: #ffffff;
+            color: #ff0000;
+            color: #008000;
+            color: #0000ff;
+
+            color: #000;    /* Shorthand */
+            color: #000000; /* Longhand */
+            color: #f00;    /* Shorthand */
+            color: #ff0000; /* Longhand */
+
+            /* An Alpha Channel can also be added to the hex notation with one or two additional additional characters */
+
+            color: #9ACD32FF;   /* Yellowgreen with full opacity (no transparency) */
+            color: #9ACD3200;   /* Yellowgreen with no opacity (full transparancey) */
+        }
+
+/*  - Use a base-16 hexadecimal number system
+    - Sixteen symbols are used to denote the values from 0 to 15 
+    (0-9, A-F)
+    0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15
+    0 1 2 3 4 5 6 7 8 9  A  B  C  D  E  F
+    
+    - Google Hex Opacity Table
+
+
+

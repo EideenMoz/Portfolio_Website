@@ -1,0 +1,254 @@
+The CSS Box Model 
+    - The content box contains the content added using the HTML tags 
+    - The padding box surrounds the content and adds space inside of the element 
+    - The border box surrounds the padding area 
+    - The margin box surrounds the entire element 
+    https://dev.to/alvaromontoro/the-css-box-model-built-only-with-css-36m6
+    
+Width and Height 
+    - Set the width and height of the content box
+    - Used with keywords, <length> and <percentage> values 
+    - Minimum/maximum values can be set with min-width, max-width, min-height, and max-height 
+    
+Padding 
+    - Defines the space inside an element and around the content box 
+    - Used with <length> or <percentage> values 
+    - Set padding to a 0 value to remove default styles 
+    - Can be defined using one to four values 
+    - Shorthand
+    i.e. 
+        /* Same on all sides */
+        padding: 20px;
+
+        /* Top and Bottom | right and left */
+        padding: 20 px 5px;
+    
+        /* Top | right and left | bottom */
+        padding: 20px 5px 40px;
+
+        /* Top | right | bottom | left */
+        padding: 20px 20px 0px 0px 
+
+    - Longhand 
+    i.e. 
+        padding-top: 20px;
+        padding-right: 20px;
+        padding-bottom: 20px;
+        padding-left: 20px;
+
+Margin 
+    - Defines the space around the element 
+    - Used with positive or negative <length> or <percentage> values, or can use keyowrd auto
+    - Follows the same syntax rules as padding for longhand and shorthand properties 
+    - Shorthand 
+    i.e. 
+        /* Same on all sides */
+        margin: 20px;
+
+        /* Top and bottom | right and left */
+        margin: 20px 5px;
+
+        /* Top | right and left | bottom */
+        margin: 20px 5px 40 px;
+
+        /* Top | right | bottom | left */
+        margin: 20px 20px 0px 0px;
+
+    - Longhand 
+    i.e. 
+        margin-top: 20px;
+        margin-right: 20px;
+        margin-bottom: 20px;
+        margin-left: 20px;
+
+Border 
+    - Defines a border style 
+    - Displays between the padding and margin boxes 
+    - Shorthand 
+    i.e. 
+        /* Shorthand */
+        border: 1px solid red;
+
+    - Longhand 
+    i.e. 
+        /* Longhand */
+        border-width: 1px;
+        border-style: solid;
+        border-color: red;
+
+    - border-width Values 
+    i.e. 
+        /* <length> values */
+            border-width: 4px;
+            border-width: 1.2rem;
+
+        /* Keyword values */
+        border-width: thin;
+        border-width: medium;
+        border-width: thick;
+
+    - border-color Values 
+    i.e. 
+        /* <color> values */
+        border-color: red;
+        border-color: #f015ca;
+        border-color: rgb(240 30 50);
+
+    - border-style Values 
+    i.e. 
+        /* Keyword Values */
+        border-style: none;
+        border-style: hidden;
+        border-style: dotted;
+        border-style: dashed;
+        border-style: solid;
+        border-style: double;
+        border-style: groove;
+        border-style: ridge;
+        border-style: inset;
+        border-style: outset;
+
+------------------------------------------------------------------------------------------------------------------------------------
+The box-sizing Property 
+    - The box-sizing property defines how the total width and height of an element are calculated
+    - There are two values:
+        1. content-box 
+        2. border-box
+    i.e. 
+        box-sizing: content-box     /* Increases size when padding and border are added */
+        box-sizing: border-box      /* Remains the same size when padding and border are added, generally used more often so you don't have to adjust the width and height when adding border styles  */
+    
+    - The default box-sizing value is content-box
+    - The width and height values apply to the content-box of the element 
+    - Any added border or padding styles will increase the element's total size.
+    i.e. 
+        <!-- HTML -->
+        <div class="box-1">Box 1</div>
+        <div class="box-2">Box 2</div>
+        <!-- CSS -->
+        div {
+            background: lightblue;
+            width: 200px;
+            height: 100px;
+            margin: 20px;
+            padding: 20px;
+            border: 10px solid black;
+        }
+        .box-1 {
+            box-sizing: content-box;
+            width: 140px;
+            height: 40px;
+        }
+        .box-2 {
+            box-sizing: border-box;
+        }
+
+The Box Model Fix 
+    html {
+        box-sizing: border-box;
+    }
+    *, *::before, *::after {
+        box-sizing: inherit;
+    }
+    
+------------------------------------------------------------------------------------------------------------------------------------
+Block Elements
+    - Same height as content, same width as container
+    - Always start on a new line
+    - Common block elements:
+        <p></p> <h1></h1> <article></article> <section></section>
+
+Inline Elements 
+    - Take up the same space as their content 
+    - Elements are displayed in a line from the left 
+    - Elements will only wrap when items cannot fit 
+    - Common inline elemeents:
+        <a href=""></a> <span></span> <strong></strong>
+
+The CSS display Propert 
+    - The display property is used to change the default behavior of block and inline elements using one of three values:
+        block, inline, or inline-block 
+    i.e. 
+        <!-- HTML -->
+        <div>Block-level element</div>
+        <div>Block-level element</div>
+        <span>Inline element</span>
+        <span>Inline element</span>
+        <!-- CSS -->
+        div {
+            background: pink;
+            height: 50px;
+            width: 200px;
+            margin: 20px;
+            padding: 40px;
+            border: 4px solid black;
+            display: inline-block;          /* All the box-model properties are applied like block elements, but the elements are displated side by side like inline elements */
+        }
+        span {
+            background: lightblue;
+            height: 50px;           /* Adding width and height has no effect for inline elements */
+            width: 200px;
+            margin: 20px;           /* Adding margin only adds space to the left and right of element, maintaining vertical positioning */
+            padding: 40px;          /* May overlap surrounding elements if it takes up more space than is available */
+            border: 4px solid black;        /* Same behavior as padding */
+            display: block;
+        }
+
+------------------------------------------------------------------------------------------------------------------------------------
+Box Model Quirks 
+    - Margin collapsing
+        - A behavior where the margins of adjacent elements occupy the same space
+    - Sometimes, there will be margin overlapping between the bottom of one element and the bottom of another element 
+    - We need to account for both elements to solve this problem 
+    i.e. 
+        <!-- HTML -->
+        <p class="first-block">Block</p>
+        <p class="second-block">Block</p>
+        <div class="container">
+            <span>Inline</span>
+            <span class="close-gap">Inline</span>
+        </div>
+        <!-- CSS -->
+        p {
+            background: lightgreen;
+        }
+        span {
+            background: yellow;
+            font-size: 16px;
+        }
+        .container {
+            font-size: 0;
+        }
+        .close-gap {
+           /* margin-left: -4px; */
+        }
+        .first-block {
+            margin-bottom: 0;
+        }
+        .second-block {
+            margin-top: 0;
+        }
+------------------------------------------------------------------------------------------------------------------------------------
+Center-Aligning with margin 
+    - Use auto for the left and right values to center-align block elements 
+    i.e. 
+        .example {
+            width: 1000px;
+            margin: 0 auto;
+        }
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+        
+    

@@ -1,0 +1,131 @@
+/* body is the "Selctor", background: paleturquoise is the "Declaration"
+    background is a "Property"
+    paleturquoise is the "Value"
+ */
+
+/*
+COLOR PALETTE
+
+Shark #2A2F33
+Nomad #BBB6A5
+Mantle #8C9491
+Manatee #8C8C9C
+Kabul #5B443E
+Chestnut Rose #CD6858
+Celeste #CECFCD
+
+*/
+
+/* GLOBAL STYLES 
+--------------------------------------*/
+html {
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    background: #2A2F33;
+    color: black;
+    margin: 0;
+}
+
+/* links */
+a {
+    color: #8C9491;
+}
+
+a:hover {
+    color: #BBB6A5;
+    text-decoration: none;      /* Removes the underline from the link */
+}
+
+/* Footer Links */
+footer a {
+    color: #BBB6A5;
+
+}
+
+footer a:hover {
+    color: #8C9491;
+}
+
+/* buttons */
+.btn {
+    background: #CD6858;
+    color: #BBB6A5;
+    text-decoration: none;
+}
+
+.content-wrapper {
+    margin: 0 auto;
+    padding: 30px;
+    max-width: 900px;
+}
+
+/* HOME
+--------------------------------------*/
+.home {
+    background: url(../images/2400-comfortable-apartment-with-bright-and-cozy-interior-design.jpg) no-repeat;
+    background-size: cover;
+}
+
+.home .content-wrapper {
+    /* background: color / opacity */
+    background: rgba(255, 255, 255, 0.5);
+}
+
+/* RESUME
+--------------------------------------*/
+.resume header::before {
+    background: url(../images/2400-comfortable-apartment-with-bright-and-cozy-interior-design.jpg) no-repeat;
+    background-position: top;
+    background-size: cover;
+    content: "";
+    display: block;
+    height: 400px;
+}
+
+/* Profile
+--------------------------------------*/
+
+/* Projects
+--------------------------------------*/
+
+/* Work Experience
+--------------------------------------*/
+
+/* Education
+--------------------------------------*/
+
+/* FOOTER
+--------------------------------------*/
+footer {
+    background: #222222;
+    color: #BBB6A5;
+}
+
+footer ul.socials {
+    list-style-type: none;
+    padding: 0;
+}
+
+footer ul.socials li {
+    display: inline-block;
+}
+
+footer ul.socials img {
+    width: 32px;
+}
+
+
+
+

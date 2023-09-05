@@ -1,0 +1,129 @@
+Where to find images?
+    - Stock photography: photos that can be licensed for specific uses 
+        - Unsplash
+        - Lorem Picsum (placeholder images)
+    - Icons: small graphics used to add visual interest (such as naviagation elements or social media links)
+        - Iconfinder
+
+Optimizing images for the web
+    - Resize large images to improve website speed
+    - Large size dimensions are used for print (such as 4000px x 3000px)
+    - Files should be as small as possible for the web 
+
+Pixel Density 
+    - The number of pixels contained within a physical area of a screen 
+    - Measured in pixels per inch (PRI)
+    - Higher pixel density = more pixels = sharper images and text 
+        - Adobe Express and ShutterShock used for resizing images 
+------------------------------------------------------------------------------------------------------------------------------------
+
+Relative Paths 
+    - Used to link to files located within the same project 
+    - The path is determined by the file's loaction in the directory
+    i.e.
+        <a href="resume.html"></a>
+        <img src="images/thumbnail.jpg">
+    - File paths are case-sensitive
+
+Absolute Paths 
+    - Used to link to external web resources 
+    - The path uses the full URL, including the protocol (https), domain name, director, and file name 
+    i.e.
+        <a href=\"https://website.com\"></a>
+        <a href=\"https://website.com/posts/\"></a>
+        <a href=\"https://website.com/posts/page.html\"></a>
+
+Avoid Hotlinking
+    - Hotlinking: embedding web resources (such as images) from other websites into your own website 
+    i.e.
+        <!-- link to an external website -->
+        <a href="https://notmywebsite.com"></a>
+
+        <!-- hotlinking -->
+        <img src="https://notmywebsite.com/images/photo.jpg">
+
+    - We can use picsum 
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+Referencing CSS: Inline, Internal, and External
+
+Inline CSS 
+    - The inline method uses a style attribute added to the opening HTML tag
+    i.e.
+        <p>Default black text.</p>
+        <p style="color: red;">Red text.</p>        
+        <p style="color: red;">Red text.</p>        <!-- Each tag needs its own style attribute for inline CSS -->
+        <p style="color: red; font-size: 12px; background: #333;">Multiple styles.</p>
+
+    - Overrides style rules added by other methods
+    - Should be used sparingly, if at all 
+    - This method is difficult to maintain
+
+Internal CSS
+    - CSS is added to the head section of the HTML document
+    - All the CSS style rules are enclosed between style tags 
+    - CSS selectors can then be used to apply styles to all the matched elements, instead of each element individually
+    i.e. 
+        <head>
+            <style>
+                p {
+                    color: red;
+                }
+            </style>
+        </head>
+        <body>
+            <p>This is a red paragraph</p>
+            <p>This is another red paragraph</p>
+        </body>
+
+    - To style multiple pages, the same block must be added to each page 
+    i.e. 
+        <!-- index.html file -->
+        <head>
+            <style>
+                p {
+                    color: red;
+                }
+            </style>
+        </head>
+
+        <!-- resume.html file -->
+        <head>
+            <style>
+                p {
+                    color: red;
+                }
+            </style>
+        </head>
+
+External CSS
+    - Involves using a separate file for the CSS which is referenced in the HTML file using the link tag 
+    - The link tag is a void HTML element so it doesn't need a closing tag 
+        - It's also included in the head section of the document 
+    i.e. 
+        <head>
+            <title>page title</title>
+            <link rel="stylesheet" href="css/styles.css">
+        </head>
+
+    - An external stylesheet can be shared among multiple HTML files in the project by linking to the same CSS file
+    - Any changes made to the stylesheet will be applied to all the HTML pages it's linked to 
+    i.e.
+        <!-- index.html file -->
+        <head>
+            <title>Home Page</title>
+            <link rel="stylesheet" href="css/styles.css">
+        </head>
+
+        <!-- resume.html file -->
+        <head>
+            <title>Home Page</title>
+            <link rel="stylesheet" href="css/styles.css">
+        </head>
+
+    - Recommended method 
+    - Separates the CSS from the HTML 
+    - Reusable and easier to maintain 
+
+

@@ -1,0 +1,311 @@
+Creating a color palette
+    - Canva
+    - Coolors.io
+
+CSS Selectors
+    - Used to select specific HTML elements and apply styles to them 
+    - Different types of selectors are used to determine which element the style should be applied to
+
+Type Selectors 
+    - Also referred to as element selectors 
+    - Matches to all elements with the same tag name
+    i.e.
+        /* This style will apply to all <h2> elements. */
+        h2 {
+            color: darkslategray;
+        }
+
+Universal Selector 
+    - Selects all elements on the HTML page using an asterisk (*)
+    - May cause performance issues and should be used sparingly 
+    i.e.
+        * {
+            /* This style will apply to ALL the elements. */
+            border: 1px solid black;
+        }
+
+ID Selectors 
+    - Match to a single unique element 
+    - Add an ID attribute to the HTML element 
+    i.e. 
+        <header id="custom-name"></header>
+
+    - The attribute value is the selector, starting with a number symbol (#)
+    i.e.
+        #custom-name {
+            background: lightblue;
+        }
+    
+Naming Conventions
+    - Don't use spaces 
+    - Separate words with a dash, an underscore, or camel casing
+    i.e. 
+        id="idname"
+        id="id_name"
+        id="id-name"
+        id="idName"
+    - Use descriptive names 
+    i.e.
+        id="global-header"
+
+Class Selectors 
+    - Match to one or more elements based on the class attribute value
+    - Add a class attribute to the HTML element 
+    i.e. 
+        <p class="fancy">Fancy Paragraph</p>
+    
+    - The attribute value is the selector and starts with a period (.)
+    i.e. 
+        .fancy {
+            font-style: italic;
+        }
+    
+    - Class names can be reused by adding the same value to any element
+    - Selector matches to the class name, not the element 
+    i.e. 
+        <h2 class="fancy">Fancy heading</h2>
+        <p class="fancy">Fancy paragraph</p>
+
+Multliple Classes 
+    - More than one class can be added to the same element 
+    - Order of class names doesn't matter 
+    - Must be separated by a space and contained within the quotes 
+    i.e.
+        <p class="fancy">Fancy paragraph</p>
+        <p class="highlight">Highlighted paragraph</p>
+        <p class="fancy highlight">Fancy and highlighted paragraph</p>
+
+Combined Selectors 
+    - Join the selector names with no spaces 
+    - Styles are only applied when all calsses are added to the element 
+    i.e. 
+        /* Only applies if "fancy" and "highlight" classes are included */
+        .fancy.highlight {
+            border: 1px solid black;
+        }
+
+        <p class="fancy highlight">Fance and highlighted paragraph, with a black border</p>
+
+Combining Selector Types 
+    - Different selector types can also be combined 
+    i.e. 
+        /* Only applies to an <h1> element with an ID of "intro" */
+        h1#intro {
+            font-size: 25px;
+        }
+
+        /* Only applies to a <p> element with a class "intro" */
+        p.intro {
+            font-size: 15px;
+        }
+
+------------------------------------------------------------------------------------------------------------------------------------
+The DOM 
+    - The Document Object Model (DOM) represents the relationships between HTML elements.
+
+The DOM Relationshps 
+    i.e. 
+        <section>                   Parent Element / Ancestor Element
+            <h1>Heading</h1>        Child Element  / Sibling 
+            <p>Paragraph</p>        Child Element  / Sibling
+            <ul>                    Child Element  / Sibling
+                <li>List item</li>          Descendant Element
+                <li>List item</li>
+                <li>List item</li>
+            </ul>
+        </section>
+
+Descendant Combiantor 
+    - Used to select nested elements by combining two selectors, one targeting an ancestor element and the other a descendant element 
+    - Must be separated by a space 
+    i.e. 
+        /* Syntax */
+        ancestor descendant {}
+
+        section p {
+            color: green;
+        }
+
+        <section>
+            <p>This paragraph is green.</p>
+        </section>
+
+
+Selector Lists 
+    i.e. 
+        h1, h2, h3 {
+            font-weight: normal;
+        }
+
+        section h1, h2 {} --> section h1{} h2{}
+        section h1, section h2 {} --> section h1 {} section h2 {}
+
+------------------------------------------------------------------------------------------------------------------------------------
+The Background Property
+    /* Shorthand */
+    background 
+
+    /* Longhand */
+    background-attachment
+    background-clip 
+    background-color
+    background-image 
+    background-origin 
+    background-position 
+    background-repeat
+    background-size 
+
+    i.e. 
+        <div class="background"></div>
+
+        .background {
+            width: 600px;
+            height: 400px;
+            background-color: lightblue;
+            background-image: url(https://urlforimage);
+            background-repeat: no-repeat;        /* Prevents the image from repeating itself to fit the background size */
+            background-position: 10px 10% top bottom left right center;
+            background-size: 100% 100% cover;             /* width percentage height percentage, for image */
+        }
+
+    - When using the shorthand property, order doesn't matter
+    - Except when using background-size, it must be declared with a background-position value and separated with a slash (/)
+    i.e. 
+        background: url(.../image.jpg) no-repeat center/cover;
+    
+    - If there is no background-position, add background-size after 
+    i.e. 
+        background: url(.../image.jpg) no-repeat;
+        background-size: cover;
+
+------------------------------------------------------------------------------------------------------------------------------------
+Pseudo-classes 
+    - Select elements in a specific state (such as the first child element or hovering a link)
+    - Added to a selector with a colon {:} and a keyword
+    i.e. 
+        ul li:first-child {}
+        
+        a:hover {}
+
+        article p:first-of-type {}      /* Looks for the first paragraph child element in the article */
+
+Pseudo-elements 
+    - Select a specific part of an element (such as the first letter or the first line of a paragraph)
+    - Added to a selector with double coons (::) and a keyword 
+    i.e. 
+        p::first-letter {}
+
+        p::first-line {}
+
+        article p::first-letter {}      /* Applies the style to the first letter in every paragraph */
+
+        article p:first-of-type::first-letter {}        /* Applies the style to the first letter of the first paragraph within the article element*/
+
+------------------------------------------------------------------------------------------------------------------------------------
+CSS Inheritance
+    i.e. 
+        body {
+            color: #121111; /* Inherited by all descendant elements */
+        }
+
+    - Inheritable styles are mainly related to typography (such as font-family or color)
+    - Non-inheritable styles are usually related to positioning or sizing elements (such as position or width)
+
+Cascade
+    - The cascade in Cascading Style Sheets refers to how style rules are applied based on source order 
+    - The browser reads style rules from top to bottom 
+    - For conflicting rules, the declaration loaded last will take precedence
+    i.e. 
+        p {
+            font-size: 12px;
+            /* This style will take precedence. */
+            font-size: 16px;
+        }
+
+        h1 {
+            font-size: 30px;
+        }
+        h1 {
+            /* This style will take precedence. */
+            font-size: 40px;
+        }
+
+Cascade and Specificity
+    - The cascade determines that the last style rule takes precedence 
+    - Specificity overrides the cascade rule 
+    i.e. 
+        .example {
+            color: blue;
+        }
+        p {
+            color: red;
+        }
+        <p class="example">This will be blue.</p>
+    
+CSS Specificity
+    - Determines which CSS rule takes precedence when styles conflict based on the type and number of selectors used. Some selectors have more weight than others, with higher-specificity selectors taking priority.
+    - More specificty --> Higher Priority 
+
+Selector Weights
+    - Highest to lowest specificity:
+        1. ID selectors 
+        2. Class selectors 
+        3. Type selectors 
+        4. Universal selector
+
+Specificity Calculations 
+    - Calculations are based on a three-category count:
+        a. The number of ID selectors 
+        b. The number of class selectors 
+        c. The number of type selectors 
+    
+    - The numbers for each count are concatenated (joined together) for a final specificty value 
+    i.e. 
+        .example p {}       /* class selector and type selector */
+        a. 0 IDs
+        b. 1 Class 
+        c. 1 Type selector 
+        ==> specificty = 011
+
+Inheritance, Cascade, and Specificity
+    - Different ways of controlling how styles are applied to HTML 
+    - Descendant elements will inherit styles from the ancestor element 
+    i.e. 
+        body {
+            color: green; /* Descendant elements will inherit this style. */
+        }
+
+    - The cascade rule will display the lat declaration if there is a conflict 
+    i.e. 
+        body {
+            color: green;
+            color: red; /* This style will take precedence */
+        }
+
+    - A more specific selector will override bother inheritance and the cascade 
+    i.e. 
+        body {
+            color: green;
+            color: red;
+        }
+
+        .home {
+            color: blue; /* This style will take precedence */
+        }
+
+The !important flag 
+    - Overrides all the rules of the cascase, inheritance, and specificty 
+    i.e. 
+        body {
+            color: green !important;    /* This style will take precedence */
+            color: red;
+        }
+
+        .home {
+            color: bluel
+        }
+
+    - Can be overridden using a more specific selector with the !important flag 
+    - May be used as a last resort in rare cases (such as using third-part frameworks)
+    - Generally considered bad practice and should be avoided
+
