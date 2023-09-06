@@ -20,4 +20,181 @@ Layouts With The Float Property
         }
     
 Clearing Floats 
-    - When there 
+    - When there is no element in the same container as the float to which a clear style can be applied to, a self clear must be applied to the parent element instead 
+    - The clear property can be used to return elements that follow a floated element back to the normal flow 
+    - The flow-root value for display should be used when a float needs to be cleared using the parent element 
+
+Option 1: overflow
+    - Use the overflow property with a value of hidden or auto 
+    - Controls how the overflow of content is displayed 
+    i.e. 
+        <!-- HTML -->
+        <div class="parent">
+            <div class="floated"></div>
+            <div class="floated"></div>
+        </div>
+        <!-- CSS -->
+        .floated {
+            float: left;
+        }
+        .parent {
+            overflow: hidden;
+            /* OR */
+            overflow: auto;
+        }
+
+The hidden Value
+    - Clips the overflow of content 
+    - The content outside of the container dimensions is hidden 
+    - May be okay for images, not recommended for text 
+
+The auto Value 
+    - Adds a scroll bar when there is an overflow of content 
+
+Option 2: The Clearfix Hack 
+    - A CSS snippet created by the dev community 
+    - Applied to the parent element 
+    i.e. 
+        <!-- HTML -->
+        <div class="clearfix">
+            <p>floated element</p>
+            <p>floated element</p>
+        </div>
+        <!-- CSS -->
+        .clearfix::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+    - ::after places a generated sudo-element after the parent element
+    - The clear property is applied to the sudo-element, resetting the following elements to a normal flow 
+
+Option 3: display (BEST OPTION)
+    - Creates a new block formatting context (BFC)
+    - All elements will be contained within the parent container
+    i.e. 
+        <!-- HTML -->
+        <div class="parent">
+            <p>floated element</p>
+            <p>floated element</p>
+        </div>
+        <!-- CSS -->
+        .parent {
+            display: flow-root;
+        }
+
+------------------------------------------------------------------------------------------------------------------------------------
+The position Property 
+    - The position property is a technique used to position elements by changing the flow of the document
+    - It has five values:
+        static
+        relative 
+        absolute 
+        fixed 
+        sticky 
+    - Removes elements from the regular flow of the document, and other elements will take their place
+
+
+Box Offset Properties 
+    - For all values except static, box offset properties must be used 
+    - top, right, bottom, and/or left are used to specify the positon (for non-static positions)
+    i.e. 
+        <!-- HTML -->
+        <div class="wrapper">
+            <div class="parent">
+                <div class="box relative">relative</div>
+                <div class="box absolute">absolute</div>
+                <div class="box fixed">fixed </div>
+            </div>
+            <div class="box sticky">sticky</div>
+            <p>Placeholder Text</p>
+        </div>
+        <!-- CSS -->
+        .wrapper {
+            border: 1px solid black;
+            position: relative;
+        }
+        .parent {
+            border: 1px solid red;
+            position: relative;
+        }
+        .relative {
+            background: lightblue;
+            position: relative;
+            top: 20px;
+            bottom: 20px;
+            right: 20px;
+            left: 20px;
+        }
+        /* When using position: absolute, it's common to contain the element within a specific area,
+            this can be done by adding a position value to a parent or ancestor element.
+            Any position: value can be used, but relative will contain the absolute box within its container.
+            Elements with absolute position are relative to the nearest positioned container element. If none exists, it will be relative to the body.
+        */
+        .absolute {
+            background: pink;
+            positon: absolute;
+            right: 25%;         /* 25% from the right, and 5% from the bottom, from the initial viewable area */
+            bottom: 5%;
+        }
+        .fixed {
+            background: lightgreen;
+            position: fixed;        /* fixed positioning is relative to the viewport, and stays in the same spot, not affected by ancestor elements */
+            top: 0;
+            right: 0;
+        }
+        .sticky {
+            background: lightgrey;
+            position: sticky;
+            top: 10px;
+        }
+
+------------------------------------------------------------------------------------------------------------------------------------
+Position and z-index 
+    - z-index is used for stacking certain elements on top of each other
+    - must use the position property to use z-index 
+    - The stacking context is the order in which HTML elements are placed on the z-axis. THe z-index property can be used to change the stacking order
+    i.e. 
+        <!-- HTML -->
+        <div class="block1">block 1</div>
+        <div class="block2">block 2</div>
+        <div class="float">
+            <p>float</p> 
+            <span class="inline">inline</span>
+        </div>
+        <div class="position">position</div>
+        <!-- CSS -->
+        .block1 {
+            background: pink;
+            position: relative;
+            z-index: 1;
+        }
+        .block2 {
+            background: palevioletred;
+            margin: -60px 0 0 20px;
+        }
+        .float {
+            background: lightblue;
+            float: left;
+            margin: -150px 0 0 100px;
+        }
+        .inline {
+            background: blue;
+            color: white;
+            padding: 10px 40px 10px 10px;
+            position: relative;
+            z-index: 2;
+        }
+        .position {
+            background: orange;
+            position: relative;
+            left: 180px;
+            top: -165px;
+            height: 110px;
+        }
+    
+    - z-index is useful for dropdown menus, tooltips, or a pop-up box
+
+
+
+    

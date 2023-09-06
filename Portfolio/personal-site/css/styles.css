@@ -44,7 +44,7 @@ a {
 }
 
 a:hover {
-    color: #BBB6A5;
+    color: #CD6858;
     text-decoration: none;      /* Removes the underline from the link */
 }
 
@@ -60,15 +60,17 @@ footer a:hover {
 
 /* buttons */
 .btn {
-    background: #CD6858;
-    color: #BBB6A5;
+    background: #BBB6A5;
+    color: #2A2F33;
+    padding: 5px;
     text-decoration: none;
 }
 
+/* content wrapper for both pages */
 .content-wrapper {
     margin: 0 auto;
     padding: 30px;
-    max-width: 900px;
+    max-width: 1000px;
 }
 
 /* HOME
@@ -91,7 +93,26 @@ footer a:hover {
     background-size: cover;
     content: "";
     display: block;
-    height: 400px;
+    height: 200px;
+}
+
+.resume {
+    color: #BBB6A5;
+}
+
+.resume-section {
+    margin-bottom: 100px;
+}
+
+.resume-section h2 {
+    border-bottom: 2px dashed #BBB6A5;
+}
+
+.resume-download {
+    position: fixed;
+    top: 5px;
+    left: 5px;
+    padding: 10px;
 }
 
 /* Profile
@@ -99,6 +120,15 @@ footer a:hover {
 
 /* Projects
 --------------------------------------*/
+.project-item {
+    display: flow-root;
+    margin: 30px 0;     /* 30px top and bottom, 0px left and right */
+}
+.project-item img {
+    width: 300px;
+    float: left;
+    margin-right: 20px;
+}
 
 /* Work Experience
 --------------------------------------*/
