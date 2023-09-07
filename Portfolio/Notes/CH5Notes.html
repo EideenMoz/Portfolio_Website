@@ -1,0 +1,231 @@
+Flexbox Terminology
+    - Flex container: the parent element 
+    - Flex items: the child elements 
+    i.e. 
+        <!-- HTML -->
+        <div>   <!-- parent element/flex container-->
+            <div>Flex item 
+                <div>Not a flex item</div>
+            </div>
+            <div>Flex item</div>
+            <div>Flex item</div>
+        </div>
+
+Flex items 
+    - Laid out along the Main Axis (horizontal)
+    i.e. 
+        <!-- CSS -->
+        flex-direction: row;    /* default */
+
+    - The Main Axis can be changed to vertical 
+    i.e. 
+        <!-- CSS -->
+        flex-direction: column;
+
+    - The Cross Axis will always run perpendicular to the direction of the Main Axis 
+
+    - Both axes also have start and end points 
+        - Main start, Main end 
+        - Cross start, Cross end 
+
+Define the Flex Container 
+    i.e. 
+        <!-- CSS -->
+        .container {
+            display: flex;
+            /* OR */
+            display: inline-flex;
+        }
+        <!-- HTML -->
+        <div class="container">
+            <div>flex item</div>
+            <div>flex item</div>
+            <div>flex item</div>
+        </div>
+
+    - When display: flex is added to the parent element, each child becomes a flex item and will automatically be displayed in a row
+    - The flex items will also be the same size as their content, while the flex container still spans the width of its container 
+
+    - When display: inline-flex is added to the parent element, the flex container will span the width of its content, the flex items, and displays inline to other flex containers
+
+------------------------------------------------------------------------------------------------------------------------------------
+The flex-direction Property 
+    - The flex-direction property determines the direction of the main axis
+    - There are four values 
+        1. row 
+        2. row-reverse
+        3. column
+        4. column-reverse
+    i.e. 
+        <!-- CSS -->
+        .container {
+            display: flex;
+            flex-direction: column;
+        }
+        <!-- HTML -->
+        <div class="container">
+            <div>flex item</div>
+            <div>flex item</div>
+            <div>flex item</div>
+        </div>
+
+flex-direction: row 
+    - Default value 
+    - The main start and main end depend on the writing mode 
+    - Flex items are the same height and width as their content 
+
+flex-direction: column
+    - Changes the main axis to a vertical direction 
+    - The main start and main end run from top to bottom 
+    - Flex items span the width of their container 
+
+row-reverse, column-reverse 
+    - reverses the direction of the main axis 
+        - bottom to top, and right to left 
+    
+flex-wrap 
+    - Flex items are arranged on a single axis by default, as defined by the flex-wrap property 
+
+flex-wrap: nowrap 
+    - Defaul value - flex items stay on the same line
+    - Remaining space in container will be displayed 
+    - Flex items will shrink when the items are larger than the container 
+    - Content will overflow if conatiner is too small 
+
+flex-wrap: wrap 
+    - Flex items that don't fit will wrap to the next line 
+    - Remaining space in container will be displayed 
+
+flex-wrap: wrap-reverse 
+    - Changes the direction of the wrapped items
+    - Only the cross start and cross end are reversed, not the main start and main end 
+
+Shorthand: flex-flow 
+    - Longhand 
+        <!-- CSS -->
+        flex-direction: column;
+        flex-wrap: wrap;
+
+    - Shorthand 
+        <!-- CSS -->
+        flex-flow: column wrap;
+
+------------------------------------------------------------------------------------------------------------------------------------
+Sizing with flex 
+    - Used to size flex items relative to their container 
+    i.e. 
+        <!-- CSS -->
+        /* Shorthand */
+        flex: 0 1 auto;
+
+        /* Longhand */
+        flex-grow: 0;
+        flex-shrink: 1;
+        flex-basis: auto;
+
+flex-grow 
+    - Determines how items expand in the flex container 
+    - Defined by a unitless <number> value 
+    - Default value of 0, meaning the flex items won't expand and the flex container won't be filled 
+    i.e. 
+        <!-- CSS -->
+        flex-grow: 0;
+
+    - A value of 1 will expand all the flex items equally, filling the flex container 
+    i.e. 
+        <!-- CSS -->
+        flex-grow: 1;
+
+    - The extra space is divided into equal parts, then added to the current size of each flex item 
+
+flex-shrink
+    - Controls how flex items will shrink if they are larger than the container 
+    - Defined with a unitless <number> value 
+    - Default value of 1, all flex items will shrink by the same amount 
+    i.e. 
+        <!-- CSS -->
+        flex-shrink: 1;
+
+    - Value of 0 will prevent the flex items from shrinking at all 
+
+flex-basis 
+    - Sets the initial size of flex items 
+    - Defined with <length>, <percentage>, or keyword values 
+    - Defaul value is auto
+    - Flex items are the same size as their content 
+    - box-sizing: content-box, meaning any padding or border will make the flex item larger 
+
+flex 
+    - The shorthand syntax follows a specific order 
+    i.e. 
+        <!-- CSS -->
+        /* flex-grow | flex-shrink | flex-basis */
+        flex: 0 1 auto;
+
+Putting it together 
+    i.e. 
+        <!-- CSS -->
+        .flex-container {
+            background: powderblue;
+            border: 5px solid darkslategrey
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+        }
+        .flex-items {
+            /* flex-grow | flex-shrink | flex-basis */
+            flex: 1 1 auto;
+            border: 4px solid white;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        .item-1 {
+            flex-grow: 2;
+        }
+        <!-- HTML -->
+        <div class="flex-container">
+            <div class="flex-item item-1">1</div>
+            <div class="flex-item">2</div>
+            <div class="flex-item">3</div>
+            <div class="flex-item">3</div>
+        </div>
+
+------------------------------------------------------------------------------------------------------------------------------------
+Center-Aligning with Flexbox 
+    - justify-content property aligns flex items on the main axis 
+    - align-items property aligns flex items on the cross axis 
+    - To center-align both vertically and horizontally, set the value to center for both properties 
+    i.e. 
+        <!-- CSS -->
+        .box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+    i.e. 
+        <!-- HTML -->
+        <ul>
+            <li>One</li>
+            <li>Two</li>
+            <li>Three</li>
+        </ul>
+        <!-- CSS -->
+        ul {
+            width: 500px;
+            height 250px;
+            display: flex;
+            justify-content: flex-start;        /* Aligns the item to the main start */
+            justify-content: flex-end;          /* Aligns the items to the main end */
+            justify-content: center;            /* Aligns the items in the middle */
+            justify-content: space-between;     /* Aligns the first item at main axis start, last item at the end of the main axis end, then evenly distributes remaining items
+
+            justify-content: space-around;      /* Distributes the same space along both sides of the items */
+            justify-content: space-evenly;      /* Distributes equal space between each items */
+            align-items: stretch;               /* Stretches the items to the height of the container */
+            align-items: center;                /* Vertically aligns the items in the center */
+            align-items: flex-start;            /* Aligns items to the cross start */
+            align-items: flex-end;              /* Aligns items to the cross end */
+        }
+
+------------------------------------------------------------------------------------------------------------------------------------
