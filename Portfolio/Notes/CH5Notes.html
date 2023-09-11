@@ -229,3 +229,155 @@ Center-Aligning with Flexbox
         }
 
 ------------------------------------------------------------------------------------------------------------------------------------
+CSS Grid
+    - Layout method used to create grid-based layouts with CSS 
+
+Grid Terminology
+    - Grid container: the parent element 
+    - Grid items: the child elements 
+    i.e.
+        <!-- HTML -->
+        <div> <!-- parent element/grid container -->
+            <div>Grid item
+                <div>Not a grid item</div>
+            </div>
+            <div>Grid item</div>
+            <div>Grid item</div>
+        </div>
+
+Define the Grid Container 
+    - Use the display property with grid or inline-grid 
+    - The grid items will display in a single column 
+    i.e. 
+        <!-- CSS -->
+        .grid-container {
+            display: grid;
+            /* OR */
+            display: inline-grid;
+        }
+    
+    - When using the value of grid, the width of the grid items will span the width of the container 
+    - The container will be displayed as a block element and stack on top of other block elements 
+    i.e. 
+        <!-- CSS -->
+        .grid-container {
+            display: grid;
+        }
+
+    - When using the value of inline-grid, the width of the grid items will span the width of their content
+    - The container will be displayed inline next to other inline elements 
+    i.e. 
+        <!-- CSS -->
+        .grid-container {
+            display: inline-grid;
+        }
+
+    - Grid lines divide the grid into columns and rows 
+    - Grid lines also determine the positiion of grid items using a numerical index or custom name 
+        - A negative numerical index can be used to reference the opposite end of the grid 
+
+    - A grid cell is a single unit where a grid row and column intersect 
+    - A grid track refers to the columns and rows 
+    - Grid tracks can also be separated by a gutter 
+    - Grid areas may span one or more grid cells and grid tracks 
+        - Unlink grid tracks, this can span across rows and columns 
+
+------------------------------------------------------------------------------------------------------------------------------------
+Creating a Grid 
+    - Grid tracks are defined in the grid container with 
+        grid-template-columns and grid-template-rows 
+    - These properties are declared in the grid container 
+    - This will create an explicit grid 
+    i.e. 
+        <!-- CSS -->
+        .grid-container {
+            display: grid;
+            grid-template-columns: 25% 50% 25%; /* Three columns /*
+            grid-template-rows: 100px 100px; /* Two rows */
+        }
+
+The Fraction Unit: fr 
+    - Represents a fraction of the availbale space in the grid container 
+    i.e. 
+        <!-- CSS -->
+        grid-template-columns: 1fr 1fr 1fr;     /* Distributes the columns evenly with the same width */
+
+    i.e. 
+        grid-template-columns: 1fr 2fr 1fr;     /* The second track takes up twice the amount of space as the first and second tracks */
+
+The repeat() Function
+    i.e. 
+        <!-- CSS -->
+        /* Synatx */
+        repeat(number of tracks, size of tracks)
+
+        grid-template-columns: 1fr 1fr 1fr;
+        /* Same as */
+        grid-template-columns: repeat(3, 1fr);
+    
+    i.e.
+        grid-template-columns: 50px repeat(2, 1fr);
+
+    i.e. 
+        <!-- HTML -->
+        <div class="grid-container">
+            <div class="grid-item">1</div>
+            <div class="grid-item">2</div>
+            <div class="grid-item">3</div>
+            <div class="grid-item">4</div>
+            <div class="grid-item">5</div>
+            <div class="grid-item">6</div>
+        </div>
+        <!-- CSS -->
+        .grid-container {
+            border: 4px solid black;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: 200px;
+            grid-auto-rows: 100px;
+        }
+        .grid-item {
+            border: 2px solid mediumvioletred;
+            padding 10px;
+        }
+
+The Explicit and Implicit Grid 
+    - grid-template-columns and grid-template-rows define the explicit grid 
+    - Once the explicit grid is filled or has not been defined, an implicit grid will be created 
+    - Use grid-auto-rows and grid-auto-columns to define the implicit grid 
+
+Adding Gutters with gap 
+    - One value: adds the same amount of space between rows and columns 
+    - Two values: the first value adds space between rows, the second value adds space between columns 
+    i.e. 
+        gap: 10px;
+        gap: 10px 30px;
+
+    - Used with <length>, calc(), or percentage values
+    i.e. 
+        /* Valid */
+        gap: 20px;
+        gap: 16%;
+        gap: calc(10% + 20px);
+
+        /* Not valid */
+        gap: 1fr;
+
+    - Can be used with the shorthand or longhand properties 
+    i.e. 
+        /* Shorthand */
+        gap: 10px 20px;
+        /* Longhand */
+        row-gap: 10px;
+        column-gap: 20px;
+
+Flexbox and Grid 
+    - The orginal grid layout specification included grid-gap, grid-row-gap, and grid-column-gap 
+    - Updated to gap so it can be used for both grid and flexbox 
+    i.e. 
+    /* Shorthand */ 
+    grid-gap -> gap 
+
+    /* Longhand */
+    grid-grow-gap -> row-gap 
+    grid-column-gap -> column-gap

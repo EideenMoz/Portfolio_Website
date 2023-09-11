@@ -34,7 +34,6 @@ html, body {
 
 body {
     background: #2A2F33;
-    color: black;
     margin: 0;
 }
 
@@ -90,7 +89,8 @@ footer a:hover {
 
 .content-bg {
     /* background: color / opacity */
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(0, 0, 0, 0.8);
+    color: #BBB6A5;
     padding: 30px;
     border: 10px solid #2A2F33;
 }
@@ -142,6 +142,11 @@ footer a:hover {
 
 /* Work Experience
 --------------------------------------*/
+.work-item {
+    display: grid;
+    grid-template-columns: 300px 1fr;   /* 300px matches width of project section pictures, 1fr fills the remaining space in grid */
+    column-gap: 20px;
+}
 
 /* Education
 --------------------------------------*/
