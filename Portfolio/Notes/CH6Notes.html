@@ -1,0 +1,281 @@
+Typography 
+    - Overall design and practice of organizing text to communicate and engage with the reader 
+
+Typeface
+    - The design of a set of letters, numbers, and symbols that share common design features 
+
+Font 
+    - The specific instance of a typeface 
+
+Font Family
+    - A collection of related fonts 
+
+Script Typeface 
+    - Hand-lettered look, convey an elegant feel 
+    - Reserved for headings or small blocks of text, to add some embellishments
+
+Decorative Typefaces 
+    - Ornamental, big personalities
+    - Reserved for headings and decorative details 
+
+Monospace Typefaces 
+    - Characters occupy the same amount of horizontal space, regardless of the character 
+    - Often used for displaying code 
+
+Serif Typefaces 
+    - Characterized by small decorative lines, usually at the top or bottom of the letters 
+    - Viewed as more traditional and formal 
+        - Times New Roman 
+
+Sans Serif Typefaces 
+    - Do not have decorative lines and are often thought of as contemporary and modern 
+    - Good for long blocks of text 
+
+------------------------------------------------------------------------------------------------------------------------------------
+The font-family Property
+    - The font-family property is used to define the typeface of an element
+    - The value is declared as a list of font options, also known as a font stack, arranged by priority from highest to lowest 
+    - The browser displays the first font in the list. If it's not installed on the user's computer, it will try the next option 
+    i.e. 
+        font-family: Avenir, Helvetica, Arial, sans-serif;
+    
+    - Always include a generic font-family as the last option, such as sans-serif 
+
+Generic Font Families 
+    - Defined by the browser 
+    - Fonts will vary across devices and operating systems 
+    - Refer to categories of fonts with similar characteristics 
+    i.e. 
+        font-family: serif;         /* Fallback for serif typefaces */
+        font-family: sans-serif;    /* Fallback for sans-serif typefaces */
+        font-family: monospace;     /* Fallback for monospace typefaces */
+        font-family: cursive;       /* Fallback for script or decorative fonts */
+        font-family: fantasy;       /* Fallback for decorative fonts */
+        font-family: system-ui;     /* Mac: San Francisco font */
+                                    /* Windows: Segoe UI font */
+
+System Fonts 
+    - Can be used as fallback or primary font options 
+    - Used to create designs that integrate with the look and feel of the user's operating system 
+    - Can still include fallback fonts in the stack 
+    i.e. 
+        font-family: system-ui, "Segoe UI", "Helvetica Neue", Arial, sans-serif
+
+Valid Font Family Names 
+    - Names with spaces, numbers, or characters other than a hyphen should be contained in quotes 
+    - Generic fonts must always be unqoted 
+    i.e. 
+        font-family: "Ahem!", sans-serif;
+        font-family: "Gill Sans", sans-serif;
+
+Web-Safe Fonts 
+    - Web-safe fonts are fonts that are commonly preinstalled on the majority of computers or devices 
+
+------------------------------------------------------------------------------------------------------------------------------------
+The font-weight Property 
+    i.e. 
+        font-weight: 100;       /* Lightest or thinnest */
+        font-weight: 200;       /* Extra light or ultra light */
+        font-weight: 300;       /* Light or book */
+        font-weight: 400;       /* Normal or regular */
+        font-weight: 500;       /* Medium */
+        font-weight: 600;       /* Semi bold or demi bold */
+        font-weight: 700;       /* Bold */
+        font-weight: 800;       /* Extra bold or Ultra bold */
+        font-weight: 900;       /* Darkest or thickest */
+
+Non-numeric Keywords 
+    - normal is the default style for body text 
+    i.e. 
+        font-weight: normal;    /* Equal to 400 */
+        font-weight: bold;      /* Equal to 700 */
+
+Missing Weights 
+    - When a weight is specified for which no font files exist, the typeface with the closest weight is used
+    i.e. 
+        font-weight: 600;       /* weight 600 doesn't exist, but 700 does, then will map to 700 */
+
+
+The font-style Property
+    - The font-style property is used to define an italic font
+    - There are three values:
+        1. italic 
+        2. oblique
+        3. normal 
+
+------------------------------------------------------------------------------------------------------------------------------------
+Web Fonts with @font-face 
+    i.e. 
+        @font-face {
+            font-family: "My Font";
+            src:    url("my-font.woff2") format("woff2"),
+                    url("my-font.woff") format("woff");
+        }
+
+    - Start the declaration with the @font-face rule 
+    - Use font-family to define the name of the font
+    - Use src() to add a path to the font files 
+    - format() is optional to provide info about the font format to the browser 
+        <!-- CSS -->
+        @font-face {
+            font-family: "My Font";
+            src: url(my-font.woff);     /* Relative Path */
+            /* OR */
+            src: url(http://example.com/my-font.woff);      /* Absolute Path */
+        }
+        body {
+            font-family: "My Font", Helvetica, Arial, sans-serif;
+        }
+
+    - Modern browsers supprot the WOFF and WOFF2 font formats 
+    - Both are usually listed, separated by a comma 
+
+------------------------------------------------------------------------------------------------------------------------------------
+Online Font Services 
+    - Don't need to download any font files or write any @font-face rules 
+    - The service includes hosting the fonts and CSS files 
+    - A link is provided to load the fonts into your projects 
+    - Adobe Fonts or Google Fonts 
+
+------------------------------------------------------------------------------------------------------------------------------------
+The font-size Property 
+    - The font-size property defines the size of text and can be used with a variety of value types 
+
+font-size and px 
+    - Ideal for accuracy
+    - Absolute value - size is always fixed 
+    - Use whole number values 
+    - Default text size is = 16px 
+    i.e. 
+        <!-- CSS -->
+        body {
+            /* Default font size */
+            font-size: 16px;
+        }
+        p {
+            /* Not affected by font-size in body */
+            font-size: 14px;
+        }
+
+font-size and em 
+    - Named after the letter m 
+    - Relative unit, sized in relation to closes ancestor element 
+    - 1em = inherited font size
+    i.e. 
+        <!-- CSS -->
+        body {
+            font-size: 20px;
+        }
+        p {
+            /* Equivalent to 30px */
+            font-size: 1.5em;
+        }
+    - Can use whole numbers or decimals 
+
+font-size and rem 
+    - Root em 
+    - Relative unit, only to the root element (HTML)
+    - Font sizing in other elements has no effect 
+    i.e. 
+        html {
+            font-size: 20px;
+        }
+        .parent {
+            font-size: 14px;
+        }
+        .child {
+            /* Equal to 20px */
+            font-size: 1rem;
+        }
+
+Relative Units 
+    - em is relative to the nearest ancestor element 
+    - rem is relative only to the root element 
+    i.e. 
+        <!-- CSS -->
+        html {
+            font-size: 20px;
+        }
+        .parent {
+            font-size: 14px;
+        }
+        .child {
+            font-size: 1em;         /* Equal to 14px */
+            font-size: 1rem;        /* Equal to 20px */
+        }
+        <!-- HTML -->
+        <div class="parent">
+            <div class="child"></div>
+        </div>
+
+Convert Pixels to rem 
+    px value / root font size = rem value 
+    i.e. 
+        /* Root = 16px */
+        16px / 16 = 1rem 
+        32px / 16 = 2rem 
+        8px  / 16 = 0.5rem 
+        14px / 16 = 0.875rem
+
+The 62.5% Method 
+    - This method for font sizing was popularized by designer Richard Rutter 
+    62.5% of 16px = 10px 
+
+    - Set the root to 62.5% to reduce the default to 10px 
+    - Set the desired base font size to the body element 
+    - Style specific elements as necessary
+    i.e. 
+        <!-- CSS -->
+        html {
+            font-size: 62.5%;       /* 10px */
+        }
+        body {
+            font-size: 1.6rem;       /* 16px */
+        }
+        h1 {
+            font-size: 4.0rem;       /* 40px */
+        }
+        h2 {
+            font-size: 3.2rem;       /* 32px */
+        }
+
+------------------------------------------------------------------------------------------------------------------------------------
+The text-align Property 
+    - The text-align property is used to align content within a block element
+    - It is an inheritable style and is defined using keyword values 
+
+The text-transform Property 
+    - The text-transform property is used to control the capitalization of text in an element 
+    - It is an inheritable style and is defined using keyword values 
+
+    i.e. 
+        <!-- CSS -->
+        section {
+            text-align: center;
+            text-align: left;
+            text-align: start;
+            text-align: right;
+            text-align: end;
+            text-align: justify;
+            text-transform: uppercase;
+            text-transform: lowercase;
+            text-transform: capitalize;
+        }
+
+
+The line-height Property 
+    - The line-height property sets the vertical spacing between lines of text
+    - It can be used with the following values: <length>, <number>, <percentage>, and the keyword normal
+
+The letter-spacing Properety 
+    - The letter-spacing properety sets the horizontal spacing between text and characters
+    - It can be defined with <length> values and the keyword normal 
+    
+    i.e. 
+        <!-- CSS -->
+        p {
+            font-size: 20px;
+            line-height: 1.5;
+            letter-spacing: 0.05em;
+        }
+        
