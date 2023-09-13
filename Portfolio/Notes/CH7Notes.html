@@ -1,0 +1,265 @@
+Intro to media queries 
+    - Media queries make it possible to selectively apply CSS based on specific conditions
+    i.e. 
+        <!-- CSS -->
+        /* Syntax */
+        @media type and (feature) {
+            /* CSS Styles */
+        }
+
+        @media screen and (max-width: 650px) {
+            h2 {
+                font-size: 1.6rem;
+            }
+        }
+
+Syntax 
+    - Media queries must start with the @media at-rule 
+    - The media type defines the device category used to display the website 
+    - Comes write after @media 
+    i.e.         
+        @media screen and (max-width: 650px) {
+            /* CSS Styles */
+        }
+
+Media Types 
+    - print matches to printers and print-related displays (such as Print Preview page)
+    - screen matches to devices with a screen 
+    - all matches to all devices, default if the media type is not defined 
+    i.e.  
+        /* Both queries target all media types. */
+        @media all { }
+        @media { }
+
+    - Media features test for a specific feature of the browser or device 
+    - Wrapped in parenthesis, no semicolon
+    i.e.         
+        @media screen and (max-width: 650px) {
+            /* CSS Styles */
+        }
+
+Media Feature:width 
+    - Used to test the width of the viewport 
+    - Ranges can be specified with min-width and max-width 
+    i.e. 
+        <!-- CSS -->
+        /* Exact width */
+        @media (width: 360px) {...}
+        /* Minimum width */
+        @media (min-width: 360px) {...}
+        /* Maximum width */
+        @media (max-width: 360px) {...}
+
+Logical Operators 
+    - Logical operators are used to combine media types and media features 
+    i.e.         
+        @media screen and (max-width: 650px) {
+            /* CSS Styles */
+        }
+    
+    - The and keyword can also be used to combine media featuers 
+    i.e. 
+        <!-- CSS -->
+        @media (max-width: 1024px) and (orientation: landscape) { }
+        
+        @media screen and (min-width: 320px) and (max-width: 1024px) { }
+
+    - All CSS styles must be contained within the curly brackets 
+    i.e. 
+        @media screen and (max-width: 650px) {
+            h2 {
+                font-size: 1.6rem;
+            }
+        }
+
+Adding Media Queries 
+    - Can be added below related CSS blocks 
+    i.e. 
+        <!-- CSS -->
+        h1 {
+            font-size: 7rem;
+        }
+        @media screen and (max-width: 500px) {
+            h1 {
+                font-size: 5rem;
+            }
+        }
+
+        footer {
+            background: #222;
+            color: #d3d4d6;
+        }
+        @media screen and (min-width: 860px) {
+            footer {
+                display: flex;
+                justify-content: space-between;
+            }
+        }
+
+    - Can be grouped together and added to the bottom of the CSS file 
+    i.e.
+        <!-- CSS -->
+        h1 {
+            font-size: 7rem;
+        }
+        footer {
+            background: #222;
+            color: #d3d4d6;
+        }
+        /* MEDIA QUERIES 
+        -------------------------------------------*/
+        @media screen and (max-width: 500px) {
+            h1 {
+                font-size: 5rem;
+            }
+        }
+        @media screen and (min-width: 860px) {
+            footer {
+                display: flex;
+                justify-content: space-between;
+            }
+        }
+
+    - Can also be written in a separate stylesheet 
+    - It must be loaded into the HTML file with <link rel="stylesheet" media="" href=""> and a media attribute
+        - The media type and feature is added as the media attribute's value 
+    i.e. 
+        <!-- HTML -->
+        <link rel="stylesheet" href="css/styles.css">
+        <link rel="stylesheet" media="screen and (max-width: 480px)" href="css/mobile.css">
+
+------------------------------------------------------------------------------------------------------------------------------------
+Breakpoints 
+    - A breakpoint is the point where a media query is introduced to make specific CSS changes when a specifc condition is true 
+        - Often a specific width of a screen or browser viewport 
+
+    - Early RWD techniques used breakpoints that targeted specific devices 
+        320px - mobile portrait
+        480px - mobile landscape
+        600px - small tablet 
+        768px - tablet portrait
+        940px to 1024px - tablet landscape
+        1280px and bigger - desktop, laptop 
+
+    - For modern responsive web design layouts, choose breakpoints where design and layout starts to break, rather than focusing on specific devices 
+
+Media Feature:width 
+    i.e. 
+        <!-- CSS -->
+        /* Exact width */
+        @media (width: 960px) 
+
+        /* 960px and larger */
+        @media (min-width: 960px) 
+
+        /* 960px and smaller */
+        @media (max-width: 960px) 
+
+    - min-width and max-width ranges include the defined value 
+    i.e. 
+        <!-- CSS -->
+        /* 960px and larger */
+        @media (min-width: 960px) 
+        /* 960px and smaller */
+        @media (max-width: 960px) 
+
+        /* 960px and larger */
+        @media (min-width: 960px) 
+        /* 959px and smaller */
+        @media (max-width: 959px) 
+
+Desktop First 
+    i.e. 
+        <!-- CSS -->
+        /* Optimized for larger screens */
+        body {...}
+
+        /* Changes for smaller screens */
+        @media (max-width: 800px) {
+            body {...}
+        }
+        @media (max-width: 400px) {
+            body {...}
+        }
+
+Mobile First 
+    i.e. 
+        <!-- CSS -->
+        /* Optimized for smaller screens */
+        body {...}
+
+        /* Changes for smaller screens */
+        @media (min-width: 800px) {
+            body {...}
+        }
+        @media (min-width: 400px) {
+            body {...}
+        }
+    
+Combine Media Features 
+    - min-width and max-width can be used together to specify a range 
+    i.e. 
+        <!-- CSS -->
+        /* Applies to any width equal to or between 400px and 800px */
+        @media (min-width: 400px) and (max-width: 800px) 
+
+------------------------------------------------------------------------------------------------------------------------------------
+Responsive Web Design (RWD)
+    - Fluid layouts 
+    - Flexible images 
+    - Media queries
+
+Flexible Sizing 
+    - Use flexible sizing with percentage values or relative units 
+    i.e. 
+        <!-- CSS -->
+        .content-wrapper {
+            width: 70%;
+        }
+
+    - If using an absolute value, pair it with min-width or max-width 
+        <!-- CSS -->
+        .content-wrapper {
+            max-width: 900px;
+        }
+
+Use Flexbox for Flexible Sizing 
+    - Flexbox was created to include flexible layout options 
+    i.e. 
+        <!-- CSS -->
+        .home .content-wrapper {
+            flex: 1 0 auto;
+        }
+
+Use Grid for Flexible Sizing 
+    - Grid was also created to include flexible layout options 
+    i.e. 
+        <!-- CSS -->
+        .work-item {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            column-gap: 20px;
+        }
+
+Flexible Images 
+    - Use flexible or relative sizing where possible 
+    i.e. 
+        <!-- CSS -->
+        background: url(image.jpg);
+        background-size: cover;
+
+------------------------------------------------------------------------------------------------------------------------------------
+The Viewport <meta> Tag 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    - name specifies the type of information/metadata to be passed into the content attribute
+    - the width=device-width sets the webpage to the same width as the device 
+    - initial-scale=1 makes the page not scale at all 
+
+
+
+
+
+
+
+        
