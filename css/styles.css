@@ -60,6 +60,10 @@ h3 {
     font-size: 2.4rem;
 }
 
+h4 {
+    font-size: 1.8rem;
+}
+
 /* links */
 a {
     color: #8C9491;
@@ -236,14 +240,23 @@ footer a:hover {
     margin-bottom: 30px;
 }
 
-.work-details p {
+.work-details {
+    margin: 0;
+    text-align: center;
+}
+
+.work-summary {
+    line-height: 2;
+}
+
+.work-summary h4 {
     margin: 0;
 }
 
 @media screen and (min-width:860px) {
     .work-item {
         display: grid;
-        grid-template-columns: 300px 1fr;   /* 300px matches width of project section pictures, 1fr fills the remaining space in grid */
+        grid-template-columns: 313px 1fr;   /* 300px matches width of project section pictures, 1fr fills the remaining space in grid */
         column-gap: 20px;
     }
 
@@ -264,6 +277,11 @@ footer a:hover {
     margin: 0;
 }
 
+/* Relevant  Coursework
+--------------------------------------*/
+.coursework {
+    line-height: 2;
+}
 
 /* FOOTER
 --------------------------------------*/
