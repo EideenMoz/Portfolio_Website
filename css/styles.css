@@ -271,9 +271,10 @@ footer a:hover {
 .education-item {
     margin-top: 30px;
     margin-bottom: 30px;;
+    line-height: 2;
 }
 
-.education-item p {
+.education-item ul{
     margin: 0;
 }
 
